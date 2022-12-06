@@ -1,0 +1,34 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>App</title>
+
+    <link rel="stylesheet" href="./css/bootstrap.css">
+  </head>
+  <body>
+
+    <table class="people_list table table-striped table-responsive" border="1">
+      <thead>
+        <th>Nama</th>
+        <th>Kelas</th>
+        <th>Nilai</th>
+      </thead>
+      <tbody>
+        {{#each dataUser}}
+          <tr>
+            <td>{{ this.nama }}</td>
+            <td>{{ this.kelas }}</td>
+            <td>
+              {{#each this.nilai }}
+                {{ this }}
+              {{/each}}  
+            </td>
+          </tr>
+        {{/each}}
+      </tbody>
+    </table>
+
+  </body>
+</html>
