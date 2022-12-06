@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\UserController;
+use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,13 +15,5 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
-});
-
-Route::get('/slicing', function () {
-    return view('slicing');
-});
-
-Route::prefix('user')->group(function () {
-    Route::get('/profile', [UserController::class, 'index']);
+    return view('layouts.app');
 });
