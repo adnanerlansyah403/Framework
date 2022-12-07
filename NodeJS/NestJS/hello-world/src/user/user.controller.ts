@@ -1,4 +1,5 @@
 import { Controller, Get, Query, Param, Req, Post, Delete } from '@nestjs/common';
+import { Request } from 'express';
 import { UserRequest } from 'src/request/user.request';
 import { UserService } from './user.service';
 
@@ -23,7 +24,13 @@ export class UserController {
       email=${request.email}`;
     }
 
-    // Update
+    // Find All
+    @Post('/store')
+    findAll(@Req() request: Request) {
+      console.log(request.body.name);
+    }
+
+    Update
     @Get(':userId')
     async updateUser(@Query() userId: string) {
       return await this.userService.update(userId);
