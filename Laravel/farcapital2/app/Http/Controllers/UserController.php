@@ -2,26 +2,15 @@
 
 namespace App\Http\Controllers;
 
-<<<<<<< HEAD
-use App\Models\User;
-use Illuminate\Http\Request;
-=======
 use Illuminate\Http\Request;
 use App\Models\User;
->>>>>>> 43f61716a72c77d9824e09265812e6904166d399
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
     public function index()
     {
         $users = User::query()
-<<<<<<< HEAD
-                ->limit(5)
-                ->offset(0)
-                ->get();
-        
-        return view('users.index', compact('users'));
-=======
             ->limit(5)
             ->offset(0)
             ->get();
@@ -43,9 +32,9 @@ class UserController extends Controller
             'email' => $request->input('email'),
             'password' => Hash::make($request->input('password')),
             'role' => $request->input('role'),
-        ]  
+        ]; 
 
-        $user = User::query()->create($payload);
+        User::query()->create($payload);
         return redirect()->back();
     } // menambahkan data
     public function create()
@@ -67,6 +56,5 @@ class UserController extends Controller
         $user = User::query()->where('id', $id)->first();
         $user->delete();
         return redirect()->back();
->>>>>>> 43f61716a72c77d9824e09265812e6904166d399
     }
 }
