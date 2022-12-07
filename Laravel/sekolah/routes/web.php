@@ -21,7 +21,7 @@ Route::get('/', function () {
         ->limit(5)
         ->offset(0)
         ->with('sekolah')
-        ->get();
+        ->paginate(10);
         
     return view('layouts.app', compact('users'));
 })->name('index');
