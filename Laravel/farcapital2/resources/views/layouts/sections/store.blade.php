@@ -15,29 +15,19 @@
 
             <ul class="store__lists">
                 <li class="store__item">
-                    <div class="store__logo">
-                        <img src="{{ asset('assets/images/hm.png') }}" alt="">
-                    </div>
+                    <x-logobox :url="'assets/images/hm.png'" />
                 </li>
                 <li class="store__item">
-                    <div class="store__logo">
-                        <img src="{{ asset('assets/images/obey.pn') }}g" alt="">
-                    </div>
+                    <x-logobox :url="'assets/images/obey.png'" />
                 </li>
                 <li class="store__item">
-                    <div class="store__logo">
-                        <img src="{{ asset('assets/images/shopify.png') }}" alt="">
-                    </div>
+                    <x-logobox :url="'assets/images/shopify.png'" />
                 </li>
                 <li class="store__item">
-                    <div class="store__logo">
-                        <img src="{{ asset('assets/images/amazon.png') }}" alt="">
-                    </div>
+                    <x-logobox :url="'assets/images/amazon.png'" />
                 </li>
                 <li class="store__item">
-                    <div class="store__logo">
-                        <img src="{{ asset('assets/images/lacoste.png') }}" alt="">
-                    </div>
+                    <x-logobox :url="'assets/images/lacoste.png'" />
                 </li>
             </ul>
 

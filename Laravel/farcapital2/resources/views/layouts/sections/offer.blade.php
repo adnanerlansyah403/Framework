@@ -19,7 +19,7 @@
                             Buy now
                         </div>
                         <button class="btn">
-                            <img src="./{{ asset('assets/images/arrow-right.png') }}" height="40" alt="">
+                            <img src="{{ asset('./assets/images/arrow-right.png') }}" height="40" alt="">
                         </button>
                     </div>
 
@@ -28,7 +28,7 @@
                 <div class="offer__item">
 
                     <div class="offer__item__img">
-                        <img src="{{ asset('assets/images/shirt5.png') }}" alt="">
+                        <img src="{{ asset('./assets/images/shirt5.png') }}" alt="">
                     </div>
 
                     <div class="offer__item__content">
@@ -37,7 +37,7 @@
                             Buy now
                         </div>
                         <button class="btn">
-                            <img src="./{{ asset('assets/images/arrow-right.png') }}" height="40" alt="">
+                            <img src="{{ asset('./assets/images/arrow-right.png') }}" height="40" alt="">
                         </button>
                     </div>
 
