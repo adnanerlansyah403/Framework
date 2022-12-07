@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
@@ -31,9 +32,9 @@ class UserController extends Controller
             'email' => $request->input('email'),
             'password' => Hash::make($request->input('password')),
             'role' => $request->input('role'),
-        ]  
+        ];
 
-        $user = User::query()->create($payload);
+        $user = User::create($payload);
         return redirect()->back();
     } // menambahkan data
     public function create()
@@ -52,7 +53,7 @@ class UserController extends Controller
     } // mengupdate data
     public function destroy ($id)
     {
-        $user = User::query()->where('id', $id)->first();
+        $user = User::where('id', $id)->first();
         $user->delete();
         return redirect()->back();
     }
