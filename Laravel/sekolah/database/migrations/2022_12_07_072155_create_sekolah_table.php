@@ -20,8 +20,9 @@ return new class extends Migration
             $table->enum('tingkatan', ['sd', 'smp', 'smk'])->nullable();
             $table->text('alamat');
             $table->string('no_telp', 16);
+            $table->string('nis', 16)->nullable();
             $table->boolean('status')->default(1);
-            $table->text('deskripsi');
+            $table->text('deskripsi')->nullable();
             $table->timestamps();
         });
     }

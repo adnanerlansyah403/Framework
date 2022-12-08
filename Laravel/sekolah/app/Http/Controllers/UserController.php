@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\UserFormRequest;
 use App\Models\Sekolah;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -27,8 +28,10 @@ class UserController extends Controller
 
         return view("users.show", compact('user', 'sekolah'));
     }
-    public function store(Request $request)
+    public function store(UserFormRequest $request)
     {
+
+        // dd($request->all());
         $payload = [
             'name' => $request->input('name'),
             'email' => $request->input('email'),
@@ -44,18 +47,17 @@ class UserController extends Controller
             'id_sekolah' => $request->input('id_sekolah'),
         ];
 
-        // dd($payload);
-
         User::create($payload);
-        return redirect()->back();
+        return redirect()->back()->with('success', 'Successfully created a new user');
     } // menambahkan data
     public function create()
     {
         $sekolah = Sekolah::query()->get();
         return view('users.create', compact('sekolah'));
     } // menampilkan halaman membuat data
-    public function update(Request $request, $id = null)
+    public function update(UserFormRequest $request, $id = null)
     {
+        // dd($request->all());    
         $user = User::query()
             ->where('id', $id)
             ->first()
@@ -73,7 +75,7 @@ class UserController extends Controller
                 'role' => $request->input('role'),
                 'id_sekolah' => $request->input('id_sekolah'),
             ]);
-        return redirect()->back();
+        return redirect()->back()->with('success', 'Successfully updated the user');
     } // mengupdate data
     public function destroy ($id)
     {

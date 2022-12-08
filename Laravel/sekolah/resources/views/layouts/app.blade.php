@@ -8,31 +8,34 @@
     $currentRoute = Route::currentRouteName();
 @endphp
 
-
-
 <div class="w-full">
     <h1 class="text-center py-4 text-[4rem] font-bold font-poppins">All Data</h1>
     <a href="{{ route('users.create') }}" class="btn-success">Tambah User</a>
-    <div class="bg-white py-4 md:py-7 shadow-lg rounded-lg mt-4">
+    <div class="bg-white py-4 md:py-7 shadow-lg rounded-lg mt-8">
         <div class="sm:flex items-center justify-between px-2 md:px-4 xl:px-10 w-full">
             <div class="flex items-center mx-auto">
                 <a class="rounded-full focus:outline-none focus:ring-2  focus:bg-indigo-50 focus:ring-indigo-800" href=" javascript:void(0)">
-                    <div class="{{ $currentRoute == 'index' ? 'linkActive' : '' }}">
+                    <a href="{{ route('index') }}" class="{{ $currentRoute == 'index' ? 'linkActive' : '' }}">
                         <p>Siswa</p>
-                    </div>
+                    </a>
                 </a>
                 <a class="rounded-full focus:outline-none focus:ring-2 focus:bg-indigo-50 focus:ring-indigo-800 ml-4 sm:ml-8" href="javascript:void(0)">
-                    <div class="{{ $currentRoute == 'sekolah' ? 'linkActive' : '' }}">
+                    <a href="{{ route('sekolah.index') }}" class="{{ $currentRoute == 'sekolah' ? 'linkActive' : '' }}">
                         <p>Sekolah</p>
-                    </div>
+                    </a>
                 </a>
             </div>
         </div>
+        @if (session()->has('success'))
+        <div class="bg-green-500 text-white font-bold rounded py-2 px-4 mb-4">
+            {{ session()->get('success') }}
+        </div>
+        @endif
         <div class="mt-7 overflow-x-auto">
             <table class="w-full whitespace-nowrap">
                 <tbody>
                     @foreach ($users as $user)
-                        <tr tabindex="0" class="focus:outline-none h-16 border border-gray-100 rounded">
+                        <tr tabindex="0" class="focus:outline-none h-16 border border-gray-100 rounded pr-4">
                             <td>
                                 <div class="ml-5">
                                     <div class="{{ $user->tingkatan == 'sd' ? 'bg-red-200' : ($user->tingkatan == 'smp' ? 'bg-blue-400' : 'bg-blue-600') }} rounded-sm w-5 h-5 flex flex-shrink-0 justify-center items-center relative">

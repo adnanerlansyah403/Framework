@@ -18,6 +18,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     $users = User::query()
+        ->orderBy('tingkatan', 'desc')
         ->limit(5)
         ->offset(0)
         ->with('sekolah')
@@ -34,4 +35,6 @@ Route::prefix('/users')->group(function () {
     Route::get('/delete/{id}', [UserController::class, 'destroy'])->name('users.destroy');
 });
 
-Route::resource('sekolah', SekolahController::class);
+Route::get('/delete/sekolah/{id}', [SekolahController::class, 'destroy'])->name('sekolah.destroy');
+Route::patch('/update/sekolah/{id}', [SekolahController::class, 'update'])->name('sekolah.update');
+Route::resource('sekolah', SekolahController::class)->except('destroy', 'update');

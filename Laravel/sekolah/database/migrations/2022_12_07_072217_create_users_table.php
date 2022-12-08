@@ -24,7 +24,7 @@ return new class extends Migration
             $table->string('tempat_lahir')->nullable();
             $table->date('tanggal_lahir')->nullable();
             $table->enum('tingkatan', ['sd', 'smp', 'smk']);
-            $table->string('nisn', 10);
+            $table->string('nisn', 50);
             $table->text('alamat')->nullable();
             $table->enum('gender', ['L', 'P'])->nullable();
             $table->text('keterangan')->nullable();

@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\SekolahFormRequest;
+use App\Models\Sekolah;
 use Illuminate\Http\Request;
 
 class SekolahController extends Controller
@@ -13,7 +15,10 @@ class SekolahController extends Controller
      */
     public function index()
     {
-        //
+        $sekolah = Sekolah::query()->orderBy('tingkatan', 'asc')->paginate(10);
+
+        // dd($sekolah);
+        return view('sekolah.index', compact('sekolah'));
     }
 
     /**
@@ -23,7 +28,7 @@ class SekolahController extends Controller
      */
     public function create()
     {
-        //
+        return view('sekolah.create');
     }
 
     /**
@@ -32,9 +37,22 @@ class SekolahController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(SekolahFormRequest $request)
     {
-        //
+        $validated = $request->validated();
+        // dd($validated);
+        Sekolah::create([
+            'name' => $validated['name'],
+            'email' => $validated['email'],
+            'tingkatan' => $validated['tingkatan'],
+            'alamat' => $validated['alamat'],
+            'no_telp' => $validated['no_telp'],
+            'nis' => $validated['nis'],
+            'status' => $validated['status'],
+            'deskripsi' => $validated['deskripsi'],
+        ]);
+
+        return redirect()->back()->with('success', 'Successfully created a new school');
     }
 
     /**
@@ -56,7 +74,11 @@ class SekolahController extends Controller
      */
     public function edit($id)
     {
-        //
+        $sekolah = Sekolah::query()
+                    ->where('id', $id)
+                    ->first();
+
+        return view("sekolah.edit", compact('sekolah'));
     }
 
     /**
@@ -66,9 +88,23 @@ class SekolahController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(SekolahFormRequest $request, $id)
     {
-        //
+        $validated = $request->validated();
+        // dd($validated);
+        
+        Sekolah::where('id', $id)->update([
+            'name' => $validated['name'],
+            'email' => $validated['email'],
+            'tingkatan' => $validated['tingkatan'],
+            'alamat' => $validated['alamat'],
+            'no_telp' => $validated['no_telp'],
+            'nis' => $validated['nis'],
+            'status' => $validated['status'],
+            'deskripsi' => $validated['deskripsi'],
+        ]);
+
+        return redirect()->back()->with('success', 'Successfully updated the school');
     }
 
     /**
@@ -79,6 +115,8 @@ class SekolahController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $sekolah = Sekolah::where('id', $id)->first();
+        $sekolah->delete();
+        return redirect()->back()->with('success', 'Successfully deleted the school');
     }
 }

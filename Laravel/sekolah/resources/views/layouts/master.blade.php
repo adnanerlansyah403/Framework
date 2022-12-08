@@ -13,19 +13,6 @@
 </head>
 <body>
 
-    {{-- <header class="container mx-auto py-4">
-        <nav>
-            <ul class="flex items-center gap-4">
-                <li>
-                    <a href="{{ url('/') }}" class="{{ $currentRoute === 'index' ? 'linkActive' : '' }}">User</a>
-                </li>
-                <li>
-                    <a href="{{ url('/sekolah') }}" class="{{ $currentRoute === 'sekolah' ? 'linkActive' : '' }}">Sekolah</a>
-                </li>
-            </ul>
-        </nav>
-    </header> --}}
-
     <div class="container mx-auto py-[60px]">
         @yield('content_master')
     </div>
