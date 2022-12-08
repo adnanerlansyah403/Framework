@@ -45,11 +45,15 @@ class SekolahFormRequest extends FormRequest
     public function messages()
     {
         return [
-            'name.required' => 'Nama harus di isi',
-            'email.required' => 'Email harus di isi',
-            'tingkatan.required' => 'Tingkatan harus di isi',
-            'nis.required' => 'NIS harus di isi',
-            'status.required' => 'Status harus di isi',
+            'name.required' => 'Input nama harus di isi',
+            'email.required' => 'Input email harus di isi',
+            'tingkatan.required' => 'Input tingkatna harus di isi',
+            'nis.required' => 'Input nis harus di isi',
+            'status.required' => 'Input status harus di isi',
+            'nis.max' => 'Input No Nis tidak boleh memiliki karakter lebih dari 50',
+            'tingkatan.max' => 'Input Tingkatan tidak boleh memiliki karakter lebih dari 50',
+            'no_telp.max' => 'Input No Telepon tidak boleh memiliki karakter lebih dari 50',
+            'alamat.max' => 'Input Alamat tidak boleh memiliki karakter lebih dari 50',
         ];
     }
 }

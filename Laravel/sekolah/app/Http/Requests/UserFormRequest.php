@@ -64,6 +64,10 @@ class UserFormRequest extends FormRequest
             'gender.required' => 'Gender harus di isi',
             'role.required' => 'Role harus di isi',
             'id_sekolah.required' => 'Sekolah harus di isi',
+            'nisn.max' => 'Input No Nisn tidak boleh memiliki karakter lebih dari 50',
+            'tingkatan.max' => 'Input Tingkatan tidak boleh memiliki karakter lebih dari 30',
+            'no_telp.max' => 'Input No Telepon tidak boleh memiliki karakter lebih dari 50',
+            'alamat.max' => 'Input Alamat tidak boleh memiliki karakter lebih dari 50',
         ];
     }
 
