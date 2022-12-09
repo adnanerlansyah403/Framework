@@ -1,5 +1,4 @@
 import { Controller, Get, Render } from '@nestjs/common';
-import { AppService } from './app.service';
 
 @Controller()
 export class AppController {
@@ -17,29 +16,29 @@ export class AppController {
       {
         nama: 'Steve',
         kelas: 'IT',
-        nilai: [80, 90, 100]
+        nilai: [80, 90, 100],
       },
       {
         nama: 'Rizqi',
         kelas: 'IT',
-        nilai: [80, 90, 100]
+        nilai: [80, 90, 100],
       },
       {
         nama: 'Udin',
         kelas: 'IT',
-        nilai: [80, 90, 100]
+        nilai: [80, 90, 100],
       },
       {
         nama: 'Asep',
         kelas: 'IT',
         nilai: {
-          'mtk': 80,
-          'indonesia': 90,
-          'inggris': 85,
-        }
+          mtk: 80,
+          indonesia: 90,
+          inggris: 85,
+        },
       },
-    ]
-    return { 
+    ];
+    return {
       reviews: [
         `<div class="col-xl-4 col-md-6 col-sm-8">
           <div class="testimonial-card bg-white">
@@ -88,13 +87,10 @@ export class AppController {
               </div>
             </div>
           </div>
-        </div>`
+        </div>`,
       ],
-      applications: [
-        'image/l3/app-store.png',
-        'image/l3/google-play.png'
-      ],
-      dataUser
-     };
+      applications: ['image/l3/app-store.png', 'image/l3/google-play.png'],
+      dataUser,
+    };
   }
 }

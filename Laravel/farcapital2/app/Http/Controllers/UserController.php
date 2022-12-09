@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
@@ -35,8 +34,7 @@ class UserController extends Controller
             'role' => $request->input('role'),
         ];
 
-        $user = User::create($payload);
-        User::query()->create($payload);
+        User::create($payload);
         return redirect()->back();
     } // menambahkan data
     public function create()

@@ -1,4 +1,4 @@
-@extends('layouts.master')
+@extends('layouts_main.master')
 
 @section('title', "User - $user->name")
 

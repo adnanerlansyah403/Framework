@@ -1,7 +1,7 @@
 <?php
 
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SekolahController;
-use App\Http\Controllers\UserController;
 use App\Models\User;
 use Illuminate\Support\Facades\Route;
 
@@ -24,7 +24,7 @@ Route::get('/', function () {
         ->with('sekolah')
         ->paginate(10);
         
-    return view('layouts.app', compact('users'));
+    return view('welcome', compact('users'));
 })->name('index');
 
 Route::prefix('/users')->group(function () {
@@ -38,3 +38,15 @@ Route::prefix('/users')->group(function () {
 Route::get('/delete/sekolah/{id}', [SekolahController::class, 'destroy'])->name('sekolah.destroy');
 Route::patch('/update/sekolah/{id}', [SekolahController::class, 'update'])->name('sekolah.update');
 Route::resource('sekolah', SekolahController::class)->except('destroy', 'update');
+
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth', 'verified'])->name('dashboard');
+
+Route::middleware('auth')->group(function () {
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+});
+
+require __DIR__.'/auth.php';
