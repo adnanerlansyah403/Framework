@@ -27,9 +27,21 @@ class ProductFormRequest extends FormRequest
             'nama' => 'required|max:100',
             'deskripsi' => 'required',
             'harga' => 'required|numeric',
-            'foto' => in_array($this->method(), ['POST']) ? 'required' : 'nullable',
+            'foto' => in_array($this->method(), ['POST']) ? 'required|max:1024' : 'nullable|max:1024',
         ];
 
         return $rules;
+    }
+
+    public function messages()
+    {
+        return [
+            'nama.required' => 'Input nama harus di isi',
+            'deskripsi.required' => 'Input deskripsi harus di isi',
+            'harga.required' => 'Input harga harus di isi',
+            'harga.numeric' => 'Input harga harus berupa angka',
+            'foto.required' => 'Input foto harus di isi',
+            'foto.max' => 'Size file dari foto tidak boleh melebihi dari 1mb',
+        ];
     }
 }

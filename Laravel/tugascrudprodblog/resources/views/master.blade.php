@@ -11,7 +11,7 @@
 <body>
 
     <div class="container">
-        <h1 class="text-4xl text-slate-400 font-bold text-center">Website Product</h1>
+        <h1 class="text-4xl text-slate-400 font-bold text-center mb-6">Website Product</h1>
         @yield('content_master')
     </div>
     

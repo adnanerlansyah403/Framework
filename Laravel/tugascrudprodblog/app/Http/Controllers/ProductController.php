@@ -48,6 +48,7 @@ class ProductController extends Controller
         $product = Product::findOrFail($id);
         
         if($request->hasFile('foto')) {
+            isset($product->foto_url) ? unlink(public_path($product->foto_url)) : false;
             $image_path = 'storage/' . $request->file('foto')->store('images_product', 'public');
         }
 
