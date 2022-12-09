@@ -1,0 +1,11 @@
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    padding: 60px 120px;
+    margin-inline: auto;
+}
