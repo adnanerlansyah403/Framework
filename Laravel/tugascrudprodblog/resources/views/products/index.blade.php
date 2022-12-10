@@ -1,5 +1,7 @@
 @extends('master')
 
+@section('title', "List Product")
+
 @section('content_master')
 
     <h1 class="text-2xl text-slate-600">List Product</h1>

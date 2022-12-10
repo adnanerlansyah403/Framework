@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BlogController;
 use App\Http\Controllers\ProductController;
 use App\Models\Product;
 use Illuminate\Support\Facades\Route;
@@ -28,6 +29,20 @@ Route::prefix('/products')
     ->controller(ProductController::class)
     ->group(function() {
 
+    Route::get('/create', 'create')->name('create');
+    Route::post('/store', 'store')->name('store');
+    Route::get('{id}/show', 'show')->name('show');
+    Route::patch('{id}/update', 'update')->name('update');
+    Route::get('{id}/delete', 'destroy')->name('destroy');
+    
+}); 
+
+Route::prefix('/blogs')
+    ->name('blogs.')
+    ->controller(BlogController::class)
+    ->group(function() {
+
+    Route::get('/', 'index')->name('index');
     Route::get('/create', 'create')->name('create');
     Route::post('/store', 'store')->name('store');
     Route::get('{id}/show', 'show')->name('show');
