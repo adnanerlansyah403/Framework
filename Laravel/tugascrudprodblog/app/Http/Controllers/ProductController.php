@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\ProductFormRequest;
 use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class ProductController extends Controller
 {
@@ -23,9 +24,7 @@ class ProductController extends Controller
     public function store(ProductFormRequest $request) {
 
         $request->validated();
-
-        // dd("test");
-
+        
         if($request->hasFile('foto')) {
             $image_path = 'storage/' . $request->file('foto')->store('images_product', 'public');
         }
@@ -33,9 +32,13 @@ class ProductController extends Controller
         Product::create([
             'nama' => $request->input('nama'),
             'harga' => $request->input('harga'),
+            'diskon' => $request->input('diskon'),
+            'harga_diskon' => ($request->input('harga') * 100) / $request->input('diskon'),
             'deskripsi' => $request->input('deskripsi'),
             'foto_name' => $request->file('foto')->getClientOriginalName(),
-            'foto_url' => $image_path
+            'foto_url' => $image_path,
+            'kondisi' => $request->input('kondisi'),
+            'status' => $request->input('status'),
         ]);
 
         return redirect()->back()->with('success', 'Product created successfully');

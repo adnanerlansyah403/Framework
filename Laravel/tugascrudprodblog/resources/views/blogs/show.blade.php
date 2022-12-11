@@ -69,7 +69,7 @@
     @endif
 
     <form
-        action="{{ route('blogs.update', $blog->id) }}"
+        action="{{ route('blogs.update', $blog->slug) }}"
         method="POST"
         enctype="multipart/form-data"
     >

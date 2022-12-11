@@ -60,7 +60,7 @@
                     Harga
                     </label>
                     <input
-                    type="text"
+                    type="number"
                     name="harga"
                     id="harga"
                     placeholder="Harga..."
@@ -68,15 +68,49 @@
                     />
                 </div>
             </div>
-            <div class="w-full px-3">
+            <div class="w-full px-3 sm:w-1/2">
                 <div class="mb-5">
                     <label
-                    for="deskripsi"
+                    for="diskon"
                     class="mb-3 block text-base font-medium text-[#07074D]"
                     >
-                    Deskripsi
+                    Diskon
                     </label>
-                    <textarea name="deskripsi" id="" class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#86efac] focus:shadow-md" cols="30" rows="5" placeholder="Description..."></textarea>
+                    <input
+                    type="number"
+                    name="diskon"
+                    id="diskon"
+                    placeholder="Diskon..."
+                    class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#86efac] focus:shadow-md"
+                    />
+                </div>
+            </div>
+            <div class="w-full px-3 sm:w-1/2">
+                <div class="mb-5">
+                    <label
+                    for="status"
+                    class="mb-3 block text-base font-medium text-[#07074D]"
+                    >
+                    Kondisi
+                    </label>
+                    <select name="kondisi" id="kondisi" class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#86efac] focus:shadow-md">
+                        <option value="0">New</option>
+                        <option value="1">Second</option>
+                    </select>
+                </div>
+            </div>
+            <div class="w-full px-3 sm:w-1/2">
+                <div class="mb-5">
+                    <label
+                    for="status"
+                    class="mb-3 block text-base font-medium text-[#07074D]"
+                    >
+                    Status
+                    </label>
+                    <select name="status" id="status" class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#86efac] focus:shadow-md">
+                        <option value="1">In Stock</option>
+                        <option value="0">Out of Stock</option>
+                    </select>
                 </div>
             </div>
             <div class="w-full px-3 sm:w-1/2">
@@ -94,6 +128,17 @@
                     placeholder="Foto..."
                     class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#86efac] focus:shadow-md"
                     />
+                </div>
+            </div>
+            <div class="w-full px-3">
+                <div class="mb-5">
+                    <label
+                    for="deskripsi"
+                    class="mb-3 block text-base font-medium text-[#07074D]"
+                    >
+                    Deskripsi
+                    </label>
+                    <textarea name="deskripsi" id="" class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#86efac] focus:shadow-md" cols="30" rows="5" placeholder="Description..."></textarea>
                 </div>
             </div>
 
