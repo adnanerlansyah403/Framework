@@ -10,6 +10,9 @@
 
     @forelse ($products as $product)
         <div class="w-full max-w-md rounded bg-white shadow-xl py-10 px-4 text-gray-800 relative md:text-left mt-4">
+            <div class="absolute top-4 -left-2 bg-green-400 w-[48px] h-[48px] leading-[48px] text-white font-semibold text-xs text-center rounded-full">{{ floor($product->diskon) }}% 
+            </div>
+            <span class="absolute left-0 top-1/2 text-xl text-green-500 font-bold tracking-[.25rem] rotate-[-90deg]">SALE</span>
             <div class="md:flex flex-col">
                 <div class="w-full px-10 mb-10 md:mb-0">
                     <div class="relative">
@@ -29,9 +32,12 @@
                         </a>
                     </div>
                     <div>
-                        <div class="flex items-center mr-5">
-                            <span class="text-2xl leading-none align-baseline">Rp. </span>
-                            <span class="font-bold text-5xl leading-none align-baseline">{{ $product->harga }}</span>
+                        <div class="flex items-center gap-2 mr-5">
+                            <div class="flex items-center">
+                                <span class="text-2xl leading-none align-baseline">Rp. </span>
+                                <span class="font-bold text-5xl leading-none align-baseline">{{ $product->diskon > 1 ? $product->harga_diskon : $product->harga }}</span>
+                            </div>
+                            <del>{{ $product->harga }}</del> 
                         </div>
                         <div class="flex items-center gap-4 mt-4">
                             <a href="{{ route('products.show', $product->id) }}" class="bg-yellow-300 opacity-75 hover:opacity-100 text-yellow-900 hover:text-gray-900 rounded-full px-10 py-2 font-semibold">
@@ -46,7 +52,7 @@
             </div>
         </div>
     @empty
-        <h1 class="text-6xl text-center text-slate-500 mt-8 font-bold">Product Sedang Kosong 😌</h1>
+        <h1 class="text-6xl text-center text-slate-500 mt-32 font-bold">Product Sedang Kosong 😌</h1>
     @endforelse
 
 @endsection

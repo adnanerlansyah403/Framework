@@ -27,7 +27,10 @@ class ProductFormRequest extends FormRequest
             'nama' => 'required|max:100',
             'deskripsi' => 'required',
             'harga' => 'required|numeric',
+            'harga_diskon' => 'nullable|numeric',
             'foto' => in_array($this->method(), ['POST']) ? 'required|max:1024' : 'nullable|max:1024',
+            'kondisi' => 'required',
+            'status' => 'nullable'
         ];
 
         return $rules;
@@ -38,8 +41,10 @@ class ProductFormRequest extends FormRequest
         return [
             'nama.required' => 'Input nama harus di isi',
             'deskripsi.required' => 'Input deskripsi harus di isi',
+            'kondisi.required' => 'Input kondisi harus berupa di isi',
             'harga.required' => 'Input harga harus di isi',
             'harga.numeric' => 'Input harga harus berupa angka',
+            'harga_diskon.numeric' => 'Input harga diskon harus berupa angka',
             'foto.required' => 'Input foto harus di isi',
             'foto.max' => 'Size file dari foto tidak boleh melebihi dari 1mb',
         ];

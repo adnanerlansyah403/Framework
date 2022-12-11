@@ -51,7 +51,7 @@
     
             </div>
         @empty
-            <h1 class="flex items-center justify-center w-full text-6xl text-center text-slate-500 mt-8 font-bold">Blog Sedang Kosong 😌</h1>
+            <h1 class="flex items-center justify-center w-full text-6xl text-center text-slate-500 mt-32 font-bold">Blog Sedang Kosong 😌</h1>
         @endforelse
     </div>
 

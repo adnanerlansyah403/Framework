@@ -31,9 +31,18 @@ Route::prefix('/products')
 
     Route::get('/create', 'create')->name('create');
     Route::post('/store', 'store')->name('store');
-    Route::get('{id}/show', 'show')->name('show');
-    Route::patch('{id}/update', 'update')->name('update');
-    Route::get('{id}/delete', 'destroy')->name('destroy');
+    Route::get('{id}/show', 'show')->name('show')
+        ->where([
+        'id' => '[0-9]+',
+    ]);
+    Route::patch('{id}/update', 'update')->name('update')
+    ->where([
+        'id' => '[0-9]+',
+    ]);
+    Route::get('{id}/delete', 'destroy')->name('destroy')
+    ->where([
+        'id' => '[0-9]+',
+    ]);
     
 }); 
 
@@ -45,8 +54,17 @@ Route::prefix('/blogs')
     Route::get('/', 'index')->name('index');
     Route::get('/create', 'create')->name('create');
     Route::post('/store', 'store')->name('store');
-    Route::get('{id}/show', 'show')->name('show');
-    Route::patch('{id}/update', 'update')->name('update');
-    Route::get('{id}/delete', 'destroy')->name('destroy');
+    Route::get('{slug}/show', 'show')->name('show')
+    ->where([
+        'slug' => '[a-z]+',
+    ]);
+    Route::patch('{slug}/update', 'update')->name('update')
+    ->where([
+        'slug' => '[a-z]+',
+    ]);
+    Route::get('{slug}/delete', 'destroy')->name('destroy')
+    ->where([
+        'slug' => '[a-z]+',
+    ]);
     
 }); 

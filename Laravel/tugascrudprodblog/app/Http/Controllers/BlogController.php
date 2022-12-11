@@ -16,8 +16,8 @@ class BlogController extends Controller
         return view('blogs.index', compact('blogs'));
     }
     
-    public function show($id) {
-        $blog = Blog::findOrfail($id);
+    public function show($slug) {
+        $blog = Blog::findOrfail($slug);
         
         return view('blogs.show', compact('blog'));
     }
@@ -51,11 +51,11 @@ class BlogController extends Controller
         return redirect()->back()->with('success', 'Blog created successfully');
     }
 
-    public function update(BlogFormRequest $request, $id) {
+    public function update(BlogFormRequest $request, $slug) {
 
         $request->validated();
 
-        $blog = Blog::findOrFail($id);
+        $blog = Blog::findOrFail($slug);
         
         if($request->hasFile('thumbnail')) {
             isset($blog->thumbnail_path) ? unlink(public_path($blog->thumbnail_path)) : false;
@@ -73,9 +73,9 @@ class BlogController extends Controller
         return redirect()->back()->with('success', 'Blog updated successfully');
     }
 
-    public function destroy($id) {
+    public function destroy($slug) {
 
-        $blog = Blog::findOrFail($id);
+        $blog = Blog::findOrFail($slug);
 
         file_exists(public_path($blog->thumbnail_path)) ? unlink(public_path($blog->thumbnail_path)) : false;
         
