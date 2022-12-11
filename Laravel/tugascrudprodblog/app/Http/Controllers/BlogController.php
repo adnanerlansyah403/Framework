@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\BlogFormRequest;
 use App\Models\Blog;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class BlogController extends Controller
 {
@@ -13,12 +14,14 @@ class BlogController extends Controller
     {
         $blogs = Blog::query()->get();
 
+        // dd($blogs);
+
         return view('blogs.index', compact('blogs'));
     }
     
-    public function show($slug) {
-        $blog = Blog::findOrfail($slug);
+    public function show(Blog $blog) {
         
+        // dd($blog);
         return view('blogs.show', compact('blog'));
     }
 
@@ -29,11 +32,9 @@ class BlogController extends Controller
 
     public function store(BlogFormRequest $request) {
 
-        // dd($request);
-
         $request->validated();
 
-        // dd("test");
+        // dd(Str::of($request->input('title'))->slug('-'));
 
         if($request->hasFile('thumbnail')) {
             $image_path = 'storage/' . $request->file('thumbnail')->store('images_blog', 'public');
@@ -41,6 +42,7 @@ class BlogController extends Controller
         
         Blog::create([
             'title' => $request->input('title'),
+            'slug' => Str::of($request->input('title'))->slug('-'),
             'category' => $request->input('category'),
             'author_name' => $request->input('author_name'),
             'body' => $request->input('body'),
@@ -51,12 +53,12 @@ class BlogController extends Controller
         return redirect()->back()->with('success', 'Blog created successfully');
     }
 
-    public function update(BlogFormRequest $request, $slug) {
+    public function update(BlogFormRequest $request, Blog $blog) {
 
         $request->validated();
 
-        $blog = Blog::findOrFail($slug);
-        
+        // dd($blog);
+
         if($request->hasFile('thumbnail')) {
             isset($blog->thumbnail_path) ? unlink(public_path($blog->thumbnail_path)) : false;
             $image_path = 'storage/' . $request->file('thumbnail')->store('images_blog', 'public');
@@ -64,24 +66,22 @@ class BlogController extends Controller
 
         $blog->update([
             'title' => $request->input('title'),
+            'slug' => Str::of($request->input('title'))->slug('-'),
             'category' => $request->input('category'),
             'author_name' => $request->input('author_name'),
             'thumbnail' => $request->hasFile('thumbnail') ? $request->file('thumbnail')->getClientOriginalName() : $blog->thumbnail,
             'thumbnail_path' => $request->hasFile('thumbnail') ? $image_path : $blog->thumbnail_path
         ]);
         
-        return redirect()->back()->with('success', 'Blog updated successfully');
+        return redirect()->route('blogs.index')->with('success', 'Blog updated successfully');
     }
 
-    public function destroy($slug) {
-
-        $blog = Blog::findOrFail($slug);
+    public function destroy(Blog $blog) {
 
         file_exists(public_path($blog->thumbnail_path)) ? unlink(public_path($blog->thumbnail_path)) : false;
         
         $blog->delete();
         
-
         return redirect()->back()->with('success', 'Blog deleted successfully');
     }
 

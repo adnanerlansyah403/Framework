@@ -11,7 +11,7 @@ class Blog extends Model
 
     protected $guarded = ['id'];
 
-    protected $primaryKey = 'slug';
+    // protected $primaryKey = 'slug';
     
     public function getRouteKeyName()
     {

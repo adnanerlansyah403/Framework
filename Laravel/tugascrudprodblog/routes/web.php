@@ -54,17 +54,8 @@ Route::prefix('/blogs')
     Route::get('/', 'index')->name('index');
     Route::get('/create', 'create')->name('create');
     Route::post('/store', 'store')->name('store');
-    Route::get('{slug}/show', 'show')->name('show')
-    ->where([
-        'slug' => '[a-z]+',
-    ]);
-    Route::patch('{slug}/update', 'update')->name('update')
-    ->where([
-        'slug' => '[a-z]+',
-    ]);
-    Route::get('{slug}/delete', 'destroy')->name('destroy')
-    ->where([
-        'slug' => '[a-z]+',
-    ]);
+    Route::get('/{blog:slug}/show', 'show')->name('show');
+    Route::patch('/{blog:slug}/update', 'update')->name('update');
+    Route::get('/{blog:slug}/destroy', 'destroy')->name('destroy');
     
 }); 
